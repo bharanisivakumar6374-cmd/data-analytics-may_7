@@ -1,0 +1,28 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# dataset is automatically created by Power BI
+# Remove duplicate rows
+dataset = dataset.drop_duplicates()
+
+# Group data by Brand
+brand_battery = dataset.groupby('Brand')['Battery Capacity (mAh)'].mean()
+
+# Sort values in descending order
+brand_battery = brand_battery.sort_values(ascending=False)
+
+# Create bar chart
+plt.figure(figsize=(10,6))
+brand_battery.plot(kind='bar')
+
+# Labels and title
+plt.title('Average Battery Capacity by Mobile Brand')
+plt.xlabel('Mobile Brand')
+plt.ylabel('Average Battery Capacity (mAh)')
+
+# Rotate x labels
+plt.xticks(rotation=45)
+
+# Show graph
+plt.tight_layout()
+plt.show()
